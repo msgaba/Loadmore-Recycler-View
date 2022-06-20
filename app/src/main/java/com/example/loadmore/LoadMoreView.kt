@@ -36,13 +36,13 @@ class LoadMoreView : RecyclerView {
             return
         }
         if (linearLayoutManager == null) linearLayoutManager = layoutManager as LinearLayoutManager
-        val visiblePostsCount: Int = recyclerView.childCount
-        val totalPostsCount: Int = linearLayoutManager!!.itemCount
-        val firstVisiblePost: Int = linearLayoutManager!!.findFirstVisibleItemPosition()
+        val visibleItemsCount: Int = recyclerView.childCount
+        val totalItemsCount: Int = linearLayoutManager!!.itemCount
+        val firstVisibleItem: Int = linearLayoutManager!!.findFirstVisibleItemPosition()
         /** calculation to decide when to load more data as per offset and visible items
          * this depends on requirement and can vary
          * **/
-        if (totalPostsCount - visiblePostsCount <= firstVisiblePost + offsetScroll) {
+        if (totalItemsCount - visibleItemsCount <= firstVisibleItem + offsetScroll) {
             loading = isLoadmoreEnabled
             if (isLoadmoreEnabled) {
                 loadMoreListener.onLoadMore()
